@@ -957,17 +957,6 @@ Meteor.methods({
     const targets = request.tx
     let result = []
 
-
-
-
-
-
-
-
-
-
-
-
     targets.forEach((arr) => {
       const thisRequest = {
         query: arr.txhash,
@@ -976,7 +965,6 @@ Meteor.methods({
 
       try {
         const thisTxnHashResponse = Meteor.wrapAsync(getTxnHash)(thisRequest)
-
         const output = helpers.txhash(thisTxnHashResponse)
 
         let thisTxn = {}
@@ -1007,7 +995,6 @@ Meteor.methods({
             block: output.transaction.header.block_number,
             timestamp: output.transaction.header.timestamp_seconds,
           }
-
           result.push(thisTxn)
         } else if (thisTxnHashResponse.transaction.tx.transactionType === 'transfer_token') {
           // Request Token Symbol
